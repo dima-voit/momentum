@@ -25,6 +25,26 @@ function showDate() {
     day: "numeric",
     weekday: "long"
   };
-  const currentDate = new Date().toLocaleDateString('ua', dateOptions);
+  const currentDate = new Date().toLocaleDateString('en-UK', dateOptions);
   date.innerHTML = currentDate;
 }
+
+function getDayInterval() {
+  const greeting = document.querySelector(".greeting");
+  let hours = new Date().getHours();
+  let dayInterval;
+
+  if (hours >= 6 && hours < 12) {
+    dayInterval = "morning";
+  } else if (hours >= 12 && hours< 18) {
+    dayInterval = "afternoon";
+  } else if (hours >= 18 && hours < 24) {
+    dayInterval = "evening";
+  } else {
+    dayInterval = "night";
+  }
+
+  greeting.textContent = `Good ${dayInterval},`
+}
+
+getDayInterval();
