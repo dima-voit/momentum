@@ -1,14 +1,4 @@
 // Time
-// function showTime() {
-//   const time = document.querySelector(".time");
-//   const date = new Date();
-//   const currentTime = date.toLocaleTimeString();
-//   time.textContent = currentTime;
-//   setInterval(showTime, 0);
-// }
-
-// showTime();
-
 function showTime() {
   const time = document.querySelector(".time");
   let hours = new Date().getHours();
@@ -23,7 +13,18 @@ function showTime() {
   time.children[1].innerHTML = minutes;
   time.children[2].innerHTML = seconds;
 
-  setInterval(showTime, 1000)
+  setTimeout(showTime, 1000);
 }
 
-showTime();
+showTime(showDate());
+
+function showDate() {
+  const date = document.querySelector(".date");
+  const dateOptions = {
+    month: "long",
+    day: "numeric",
+    weekday: "long"
+  };
+  const currentDate = new Date().toLocaleDateString('ua', dateOptions);
+  date.innerHTML = currentDate;
+}
